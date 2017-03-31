@@ -1,0 +1,22 @@
+# 智付通技術文件: https://www.spgateway.com/dw_files/info_api/spgateway_gateway_MPGapi_V1_0_3.pdf
+# 智付通測試平台: https://cwww.spgateway.com/
+# 測試串接網址: https://ccore.spgateway.com/MPG/mpg_gateway
+# 信用卡測試卡號: 4000-2211-1111-1111
+default: &default
+  merchant_id: MS31368222
+  hash_key: RUG7HHJez4JG93wlvfp3GZdG4tfsx1Tp
+  hash_iv: WzxEhhSQlCwvF2Qa
+  url: https://ccore.spgateway.com/MPG/mpg_gateway
+  notify_url: 'http://requestb.in/19mhmnu1'  # 需至 requestb.in 取得代碼
+
+development:
+  <<: *default
+
+staging:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
