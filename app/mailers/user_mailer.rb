@@ -9,4 +9,11 @@ class UserMailer < ApplicationMailer
          subject: "ALPHA Camp | 訂單成立: #{@order.id}"
   end
 
+  def notify_shipped(order)
+    @order = order
+    @content = "Your product has been shipped."
+
+    mail to: order.email, subject: "ALPHA Camp | 商品已寄出"
+  end
+
 end
