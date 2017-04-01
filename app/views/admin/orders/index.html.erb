@@ -1,4 +1,18 @@
 <h1>Admin: Order Index</h1>
+
+<div>
+  <%= link_to 'all', admin_orders_path %> |
+
+  <% Order.order_statuses.each do |key, value| %>
+    <%= link_to key, admin_orders_path(order_status: key) %> |
+  <% end %>
+
+  <% Order.payment_statuses.each do |key, value| %>
+    <%= link_to key, admin_orders_path(payment_status: key) %> |
+  <% end %>
+</div>
+<br><br>
+
 <table>
   <tr>
     <th>#</th>
@@ -22,6 +36,7 @@
       <td><%= order.address %></td>
       <td><%= order.amount %></td>
       <td><%= order.payment_method %></td>
+      <td><%= order.payment_status %></td>
       <td><%= order.order_status %></td>
       <td><%= order.payment_status %></td>
       <td><%= link_to 'show', admin_order_path(order)%></td>

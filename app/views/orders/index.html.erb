@@ -6,8 +6,6 @@
     <th>訂單日期</th>
     <th>訂購商品</th>
     <th>訂單金額</th>
-    <th>收件人</th>
-    <th>收件資訊</th>
     <th>付款方式</th>
     <th>金流狀態</th>
     <th>訂單狀態</th>
@@ -17,18 +15,9 @@
   <% @orders.each do |order| %>
     <tr>
       <td><%= order.id %></td>
-      <td><%= order.created_at.to_date %></td>
-      <td>
-        <% order.line_items.each do |item| %>
-        <%= item.product.name %><br>
-        <% end %>
-      </td>
+      <td><%= order.created_at.strftime('%Y-%m-%d %H:%M')%></td>
+      <td><%= order.products.limit(3).pluck(:name).join(", ")+"..." %></td>
       <td>$ <%= order.amount %></td>
-      <td><%= order.name %></td>
-      <td>
-        <%= order.phone %><br>
-        <%= order.address %>
-      </td>
       <td><%= order.payment_method %></td>
       <td><%= order.payment_status %></td>
       <td><%= order.order_status %></td>

@@ -4,6 +4,14 @@ class Admin::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+
+    if params[:order_status].present?
+      @orders = Order.where( order_status: params[:order_status])
+    elsif params[:payment_status].present?
+      @orders = Order.where( payment_status: params[:payment_status])
+    else
+      @orders = Order.all
+    end
   end
 
   def update
