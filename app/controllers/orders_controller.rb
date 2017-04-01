@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   # Visitor 在這裡第一次登入，成為 Customer
-  before_action :set_order, only: [:show, :update]
+  before_action :set_order, only: [:show, :update, :checkout]
 
   def index
     @orders = current_user.orders
@@ -35,8 +35,16 @@ class OrdersController < ApplicationController
       order.update!( order_status: 'cancelled')
       flash[:alert] = "訂單已取消"
     end
-
     redirect_to orders_path
+  end
+
+  def checkout
+    if @order.paid?
+      redirect_to :back, alert: 'The order was paid'
+    else
+      @payment = @order.payments.create!(payment_method: params[:payment_method])
+      render layout: false
+    end
   end
 
   protected
