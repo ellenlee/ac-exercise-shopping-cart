@@ -4,6 +4,7 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :order_items, dependent: :destroy
   has_many :products, through: :order_items
+  has_many :payments
 
   enum payment_method: [ :credit, :atm]
   enum order_status: [ :new_order, :shipped, :cancelled]
