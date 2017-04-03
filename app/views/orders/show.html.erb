@@ -1,1 +1,17 @@
 <%= render partial: "shared/order_list", locals: { order: @order} %>
+
+<% if @order.paid? %>
+  <p>已付款完成</p>
+  <textarea>
+    <%= @order.payments.last.params %>
+  </textarea>
+<% else %>
+  <h3>選擇結帳方式</h3>
+  <% Payment::PAYMENT_METHODS.each do |method| %>
+
+
+  <%= link_to t(method, scope: 'payment.pay2go'), checkout_order_path(@order, payment_method: method), method: :post %>
+
+  <% end %>
+
+<% end %>
