@@ -5,6 +5,7 @@ RSpec.describe Cart, type: :model do
   before do
     @cart = Cart.create
     @product = Product.create!( name: "product_1", price: 100)
+    @product2 = Product.create!( name: "product_2", price: 150)
   end
 
   describe "#add_line_item" do
@@ -31,6 +32,15 @@ RSpec.describe Cart, type: :model do
       line_item = @cart.line_items.last
       expect(line_item.product).to eq(@product)
       expect(line_item.quantity).to eq(2)
+    end
+  end
+
+  describe "#total" do
+    it "it should sum line_items amount" do
+      @cart.add_line_item(@product)
+      @cart.add_line_item(@product2)
+
+      expect(@cart.total).to eq(250)
     end
   end
 end
