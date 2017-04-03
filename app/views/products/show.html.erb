@@ -1,0 +1,10 @@
+<h1><%= @product.name %></h1>
+
+<%= image_tag(@product.image_url, :width => 200) %>
+<p class = "description">
+  <%= @product.description %>
+</p>
+price: $<%= @product.price %><br>
+stock: <%= @product.in_stock_qty %>
+
+<p><%= link_to 'back to index', root_path %></p>

@@ -1,0 +1,13 @@
+<h1>Product Index</h1>
+
+
+<% @products.each do |product| %>
+  <div class="product-box">
+    <%= link_to product_path(product) do %>
+      <%= image_tag(product.image_url, width: 50 ) %><br>
+    <% end %>
+    <%= product.name %><br>
+    $<%= product.price %>
+  </div>
+<% end %>
+
