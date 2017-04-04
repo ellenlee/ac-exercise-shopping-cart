@@ -16,6 +16,7 @@ class Order < ApplicationRecord
                               quantity: item.quantity,
                               price: item.product.price )
     end
+    self.amount = cart.total
   end
 
   def init_status
