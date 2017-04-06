@@ -1,0 +1,37 @@
+<%= form_for @order do |f| %>
+
+  <% if @order.errors.any? %>
+    <% @order.errors.full_messages.each do |msg| %>
+      <%= msg %>
+    <% end %>
+  <% end %>
+
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </p>
+
+  <p>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </p>
+
+  <p>
+    <%= f.label :payment_method %>
+    <%= f.collection_select :payment_method, Order.payment_methods, :first, :first  %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
