@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     post :add_to_cart, on: :member
   end
   resource :cart
+  resources :orders
 
   namespace :admin do
     root 'products#index'
