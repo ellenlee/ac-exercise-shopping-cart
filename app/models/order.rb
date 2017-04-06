@@ -6,6 +6,8 @@ class Order < ApplicationRecord
   has_many :products, through: :order_items
 
   enum payment_method: [ :credit, :atm]
+  enum order_status: [ :new_order, :shipped, :cancelled]
+  enum payment_status: [ :atm_pending, :atm_paid, :credit_pending, :credit_paid]
 
   def add_order_items(cart)
     cart.cart_items.each do |item|
