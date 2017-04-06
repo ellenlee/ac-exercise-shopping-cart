@@ -1,18 +1,4 @@
 <h1>Admin: Order Index</h1>
-
-<div>
-  <%= link_to 'all', admin_orders_path %>
-
-  <% Order.order_statuses.each do |key, value| %>
-    <%= link_to key, admin_orders_path(order_status: key) %>
-  <% end %>
-
-  <% Order.payment_statuses.each do |key, value| %>
-    <%= link_to key, admin_orders_path(payment_status: key) %>
-  <% end %>
-
-</div>
-
 <table>
   <tr>
     <th>#</th>
