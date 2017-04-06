@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
     @order = current_user.orders.build(order_params)
     @order.add_order_items(current_cart)
     @order.amount = current_cart.total
+    @order.init_status
 
     if @order.save
       current_cart.destroy

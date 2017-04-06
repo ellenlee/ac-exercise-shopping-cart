@@ -1,0 +1,32 @@
+<h1>Admin: Order Index</h1>
+
+<table>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>email</th>
+    <th>phone</th>
+    <th>address</th>
+    <th>訂單金額</th>
+    <th>付款方式</th>
+    <th>訂單狀態</th>
+    <th>金流狀態</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.name %></td>
+      <td><%= order.email %></td>
+      <td><%= order.phone %></td>
+      <td><%= order.address %></td>
+      <td><%= order.amount %></td>
+      <td><%= order.payment_method %></td>
+      <td><%= order.order_status %></td>
+      <td><%= order.payment_status %></td>
+      <td><%= link_to 'show', admin_order_path(order)%></td>
+      <td><%= link_to 'edit', edit_admin_order_path(order) %></td>
+    </tr>
+  <% end %>
+</table>

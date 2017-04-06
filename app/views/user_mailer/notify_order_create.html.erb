@@ -3,6 +3,8 @@
 <p><%= @content %></p>
 
 <%= render partial: "shared/order_list", locals: { order: @order} %>
+<br>
+<p>付款方式：<%= @order.payment_method %></p>
 
 <p>
   Best, <br>

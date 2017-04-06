@@ -1,0 +1,39 @@
+<h1>Admin: Edit Order</h1>
+
+<%= render partial: "shared/order_list", locals: { order: @order} %>
+
+<hr>
+
+<%= form_for [:admin, @order] do |f| %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+  <div>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+  <div>
+    <%= f.label :payment_method %>
+    <%= f.collection_select :payment_method, Order.payment_methods, :first, :first  %>
+  </div>
+  <div>
+    <%= f.label :payment_status %>
+    <%= f.collection_select :payment_status, Order.payment_statuses, :first, :first  %>
+  </div>
+  <div>
+    <%= f.label :order_status %>
+    <%= f.collection_select :order_status, Order.order_statuses, :first, :first  %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
