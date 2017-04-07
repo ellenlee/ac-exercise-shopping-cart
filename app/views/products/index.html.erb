@@ -1,5 +1,25 @@
 <h1>Product Index</h1>
 
+<section id="my-cart">
+  <strong>你目前選購了 <%= current_cart.total_quantity %> 件商品，預計消費 <%= current_cart.total %> 元</strong>
+  <table>
+    <tr>
+      <th>商品</th>
+      <th>單價</th>
+      <th>數量</th>
+      <th>小計</th>
+    </tr>
+    <% current_cart.cart_items.each do |item| %>
+      <tr>
+        <td><%= item.product.name %></td>
+        <td><%= item.product.price %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.subtotal %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
+
 <%= paginate @products %>
 
 <% @products.each do |product| %>
@@ -7,6 +27,7 @@
     <%= link_to product_path(product) do %>
       <%= image_tag(product.image_url, width: 50 ) %><br>
     <% end %>
+    <%= button_to 'Add to Cart', add_to_cart_path(product) %>
     <%= product.name %><br>
     $<%= product.price %>
   </div>
