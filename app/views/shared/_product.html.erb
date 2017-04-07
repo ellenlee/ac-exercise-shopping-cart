@@ -1,0 +1,23 @@
+<h1>Admin: <%= controller_name %>#<%= action_name %></h1>
+
+<%= form_for [:admin, product] do |f| %>
+  <%= product.errors.full_messages.to_sentence if product.errors.any? %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+  <br>
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %>
+  <br>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br>
+  <%= f.label :in_stock_qty %>
+  <%= f.number_field :in_stock_qty %>
+  <br>
+  <%= f.submit %>
+<% end %>
+

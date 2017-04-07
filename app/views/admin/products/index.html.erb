@@ -1,0 +1,27 @@
+<h1>Admin: <%= controller_name %>#<%= action_name %></h1>
+
+<%= link_to 'Add new product', new_admin_product_path %>
+
+<%= paginate @products %>
+<table>
+  <tr>
+    <th>商品名稱</th>
+    <th>圖示</th>
+    <th>單價</th>
+    <th>庫存量</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= image_tag(product.image_url, width: 30 ) %></td>
+      <td>$<%= product.price %></td>
+      <td><%= product.in_stock_qty %></td>
+      <td><%= link_to 'show', product_path(product) %></td>
+      <td><%= link_to 'edit', edit_admin_product_path(product.id) %></td>
+      <td><%= link_to 'delete', admin_product_path(product.id), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
