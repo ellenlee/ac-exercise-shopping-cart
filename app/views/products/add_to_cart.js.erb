@@ -1,0 +1,11 @@
+$('.product_<%= @product.id %> .msg').html('added!').css('color','red').css('font-size', '10px');
+
+$('#cart-total-qty').text("<%= current_cart.total_quantity %>");
+$('#cart-total').text("<%= current_cart.total %>");
+
+<% if @item.quantity == 1 %>
+  $('#my-cart table').append('<%= j render partial: 'shared/item', locals: { item: @item } %>');
+<% else %>
+  $('td.cart-<%= @product.id %>-qty').text("<%= @item.quantity %>");
+  $('td.cart-<%= @product.id %>-subtotal').text("<%= @item.subtotal %>");
+<% end %>

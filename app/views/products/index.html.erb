@@ -1,7 +1,7 @@
 <h1>Product Index</h1>
 
 <section id="my-cart">
-  <strong>你目前選購了 <%= current_cart.total_quantity %> 件商品，預計消費 <%= current_cart.total %> 元</strong>
+  <strong>你目前選購了 <span id="cart-total-qty"><%= current_cart.total_quantity %></span> 件商品，預計消費 <span id="cart-total"><%= current_cart.total %></span> 元</strong>
   <table>
     <tr>
       <th>商品</th>
@@ -10,12 +10,7 @@
       <th>小計</th>
     </tr>
     <% current_cart.cart_items.each do |item| %>
-      <tr>
-        <td><%= item.product.name %></td>
-        <td><%= item.product.price %></td>
-        <td><%= item.quantity %></td>
-        <td><%= item.subtotal %></td>
-      </tr>
+      <%= render partial: 'shared/item', locals: { item: item }%>
     <% end %>
   </table>
   <%= link_to '我要結帳！', new_order_path %>
@@ -24,11 +19,12 @@
 <%= paginate @products %>
 
 <% @products.each do |product| %>
-  <div class="product-box">
+  <div class="product-box product_<%= product.id.to_s %>">
     <%= link_to product_path(product) do %>
       <%= image_tag(product.image_url, width: 50 ) %><br>
     <% end %>
-    <%= button_to 'Add to Cart', add_to_cart_path(product) %>
+    <%= button_to 'Add to Cart', add_to_cart_product_path(product), remote: true %>
+    <div class="msg"></div>
     <%= product.name %><br>
     $<%= product.price %>
   </div>
