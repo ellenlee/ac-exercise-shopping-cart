@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     post :add_to_cart, on: :member
   end
   resource :cart
-  resources :orders
+  resources :orders do
+    post :checkout_pay2go, on: :member
+  end
 
   namespace :admin do
     root 'orders#index'

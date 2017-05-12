@@ -1,1 +1,8 @@
 <%= render partial: "shared/order_list", locals: { order: @order} %>
+
+
+<p>訂單狀態：<%= @order.order_status %></p>
+
+<% if @order.order_status = "new_order" %>
+  <%= link_to '立即付款', checkout_pay2go_order_path(@order), method: :post %>
+<% end %>

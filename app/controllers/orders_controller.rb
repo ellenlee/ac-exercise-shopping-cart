@@ -25,6 +25,17 @@ class OrdersController < ApplicationController
     end
   end
 
+  def checkout_pay2go
+    @order = current_user.orders.find( params[:id] )
+
+    if @order.order_status != 'new_order'
+      flash[:alert] = "你已經付過啦"
+      redirecto_to order_path(@order)
+    else
+      render :layout => false
+    end
+  end
+
   protected
 
   def order_params

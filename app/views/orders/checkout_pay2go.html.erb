@@ -1,0 +1,19 @@
+<h1>轉址前往信用卡付款頁面，請勿關閉或離開頁面...</h1>
+
+<form name="Pay2go" action="https://ccore.spgateway.com/MPG/mpg_gateway" method="post">
+  MerchantID: <%= text_field_tag "MerchantID" %><br>
+  RespondType: <%= text_field_tag "RespondType", "JSON" %><br>
+  CheckValue: <%= text_field_tag "CheckValue" %><br>
+  TimeStamp: <%= text_field_tag "TimeStamp" %><br>
+  Version: <%= text_field_tag "Version", "1.2" %><br>
+  LangType: <%= text_field_tag "LangType", "zh-tw" %><br>
+  MerchantOrderNo: <%= text_field_tag "MerchantOrderNo" %><br>
+  Amt: <%= text_field_tag "Amt" %><br>
+  ItemDesc: <%= text_field_tag "ItemDesc" %><br>
+  ReturnURL: <%= text_field_tag "ReturnURL" %><br>
+  NotifyURL: <%= text_field_tag "NotifyURL" %><br>
+  Email: <%= text_field_tag "Email" %><br>
+  LoginType: <%= text_field_tag "LoginType", 0 %><br>
+
+  <input type="submit" value='submit'>
+</form>
